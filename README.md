@@ -32,7 +32,7 @@ Se utilizó Docker Compose para orquestar los servicios, facilitando el desplieg
 1. **Clona el repositorio**:
 
 ```bash
-git clone <https://github.com/IngCaroEsteban/GESTIONCURSOS.git>
+git clone <https://github.com/IngCaroEsteban/Cursos.git>
 cd <nombre-del-directorio>
 ```
 
