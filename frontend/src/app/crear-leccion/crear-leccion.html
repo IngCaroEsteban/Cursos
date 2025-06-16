@@ -1,0 +1,45 @@
+<div class="container p-4 my-4 border rounded shadow-sm bg-white">
+  <h2>Crear Nueva Lección</h2>
+
+  <form [formGroup]="leccionForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título:</label>
+      <input id="titulo" type="text" formControlName="titulo" class="form-control">
+      <div *ngIf="leccionForm.get('titulo')?.invalid && leccionForm.get('titulo')?.touched" class="text-danger">
+        El título es requerido.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="contenido" class="form-label">Contenido (URL de YouTube):</label>
+      <input id="contenido" type="text" formControlName="contenido" class="form-control">
+      <div *ngIf="leccionForm.get('contenido')?.invalid && leccionForm.get('contenido')?.touched" class="text-danger">
+        El contenido es requerido y debe ser una URL válida de YouTube.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="curso" class="form-label">Curso:</label>
+      <select id="curso" formControlName="curso" class="form-control">
+        <option value="">Selecciona un curso</option>
+        <option *ngFor="let curso of cursos" [value]="curso.id">{{curso.titulo}}</option>
+      </select>
+      <div *ngIf="leccionForm.get('curso')?.invalid && leccionForm.get('curso')?.touched" class="text-danger">
+        Debe seleccionar un curso.
+      </div>
+    </div>
+
+    <div class="alert alert-success" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" [disabled]="!leccionForm.valid" class="btn btn-primary">Crear Lección</button>
+      <button type="button" (click)="volver()" class="btn btn-secondary">Cancelar</button>
+    </div>
+  </form>
+</div>

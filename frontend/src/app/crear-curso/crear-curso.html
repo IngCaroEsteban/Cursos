@@ -1,0 +1,32 @@
+
+<div class="container p-4 my-4 border rounded shadow-sm bg-white">
+  <h2>Crear Nuevo Curso</h2>
+
+  <form [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título:</label>
+      <input id="titulo" type="text" formControlName="titulo" class="form-control">
+      <div *ngIf="cursoForm.get('titulo')?.invalid && cursoForm.get('titulo')?.touched" class="text-danger">
+        El título es requerido.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción:</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+      <div *ngIf="cursoForm.get('descripcion')?.invalid && cursoForm.get('descripcion')?.touched" class="text-danger">
+        La descripción es requerida.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="instructor" class="form-label">Instructor:</label>
+      <input id="instructor" type="text" formControlName="instructor" class="form-control">
+      <div *ngIf="cursoForm.get('instructor')?.invalid && cursoForm.get('instructor')?.touched" class="text-danger">
+        El instructor es requerido.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!cursoForm.valid" class="btn btn-primary">Crear Curso</button>
+  </form>
+</div>

@@ -1,0 +1,48 @@
+# docker-compose.yml
+
+
+services:
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=coursedb
+      - POSTGRES_USER=courseuser
+      - POSTGRES_PASSWORD=coursepass
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: django_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=coursedb
+      - DB_USER=courseuser
+      - DB_PASSWORD=coursepass
+      - DB_HOST=db
+      - DB_PORT=5432
+
+  frontend:
+    build: ./frontend
+    container_name: angular_frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    command: ng serve --host 0.0.0.0 --port 4200 --poll 1000
+
+volumes:
+  postgres_data:
+
+
+

@@ -1,0 +1,40 @@
+.video-grande-centrado {
+  width: 95vw !important; /* Ocupa el 95% del ancho del viewport */
+  max-width: 1400px !important; /* Limita el tamaño máximo para pantallas muy grandes, ajusta si es necesario */
+  margin: 0 auto !important; /* Centra el div */
+  height: 900px !important;
+  /* Asegura que el iframe dentro ocupe todo el espacio */
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/* Eliminar padding horizontal del container-fluid y cualquier max-width */
+app-detalle-leccion .container-fluid.no-horizontal-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: none !important; // Asegura que tome todo el ancho disponible
+}
+
+/* Ajustar la relación de aspecto para el video (16:9) */
+app-detalle-leccion .embed-responsive-16by9 {
+  padding-bottom: 56.25% !important; /* Valor estándar para 16:9 */
+}
+
+app-detalle-leccion .card-body {
+  padding: 0 !important; /* Eliminar el padding del card-body */
+}
+
+app-detalle-leccion .embed-responsive {
+  width: 100% !important; /* Hacer que ocupe todo el ancho disponible */
+  /* Eliminamos max-width y margin: 0 auto para que el video llene el contenedor */
+}
+
+/* Asegurar que la tarjeta ocupe todo el ancho disponible y no tenga max-width */
+app-detalle-leccion .card {
+  width: 100% !important;
+  max-width: none !important; 
+  border: none !important; /* Opcional: para un look más fluido si no quieres el borde de la tarjeta */
+  box-shadow: none !important; /* Opcional: para quitar la sombra de la tarjeta */
+}

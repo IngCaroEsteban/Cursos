@@ -1,0 +1,33 @@
+# Ignorar directorios y archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+.pytest_cache/
+venv/
+.venv/
+*.env # Archivos .env que contienen variables de entorno sensibles (como en .env en tu raíz)
+
+# Ignorar directorios y archivos de Node.js (Frontend)
+node_modules/
+dist/         # Carpeta de salida de builds de frontend (ej. Angular, React, Vue)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar archivos temporales y de IDEs
+.vscode/      # Configuraciones de VS Code (a veces es útil compartirlas, a veces no. Decide tú)
+.idea/        # IntelliJ IDEA
+.DS_Store     # Archivos de macOS
+Thumbs.db     # Archivos de Windows
+
+# Ignorar Docker (si no quieres versionar volúmenes o logs)
+# .dockerignore # Este es para Docker, no para Git. Ya tienes un Dockerfile.
+# docker-compose.override.yml # Si tienes un override con credenciales locales
+
+# Ignorar logs
+*.log
+
+# Ignorar cualquier otro archivo que no quieras versionar
+# my_secret_keys.txt

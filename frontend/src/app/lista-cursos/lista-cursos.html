@@ -1,0 +1,31 @@
+<div class="container p-4 my-4 border rounded shadow-sm bg-white">
+  <h1>Lista de Cursos</h1>
+
+  <div *ngIf="cursos.length > 0; else noCursos">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Título  </th>
+          <th>Descripción</th>
+          <th>Instructor</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let curso of cursos" (click)="verDetalleCurso(curso.id)" style="cursor: pointer;">
+          <td>{{curso.titulo}}</td>
+          <td>{{curso.descripcion}}</td>
+          <td>{{curso.instructor}}</td>
+          <td><button class="btn btn-primary" (click)="editarCurso(curso.id); $event.stopPropagation();">Editar</button></td>
+          <td><button class="btn btn-danger" (click)="eliminarCurso(curso.id); $event.stopPropagation();">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noCursos>
+    <p class="text-center mt-3">No hay cursos disponibles en este momento.</p>
+  </ng-template>
+</div>

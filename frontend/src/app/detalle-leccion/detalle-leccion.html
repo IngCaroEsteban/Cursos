@@ -1,0 +1,32 @@
+<div class="container-fluid mt-4 no-horizontal-padding" *ngIf="leccion">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/cursos">Cursos</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/detalle-curso', leccion.curso]">Detalle del Curso</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{leccion.titulo}}</li>
+    </ol>
+  </nav>
+
+  <div class="card">
+    <div class="card-body text-center">
+      <h1 class="card-title mb-4">{{leccion.titulo}}</h1>
+      
+      <div *ngIf="safeContenido" class="video-grande-centrado">
+        <iframe class="embed-responsive-item" [src]="safeContenido" allowfullscreen ></iframe>
+      </div>
+      <div *ngIf="!safeContenido" class="alert alert-warning mt-3">
+        No se pudo cargar el video o la URL no es válida.
+      </div>
+
+      <button class="btn btn-secondary mt-4" (click)="volver()">Volver</button>
+    </div>
+  </div>
+
+  <div class="alert alert-danger mt-3" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<div class="container mt-4 text-center" *ngIf="!leccion && !errorMessage">
+  <p>Cargando información de la lección...</p>
+</div>
